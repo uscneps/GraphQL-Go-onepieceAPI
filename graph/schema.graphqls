@@ -1,0 +1,21 @@
+# GraphQL schema example
+#
+# https://gqlgen.com/getting-started/
+
+type Pirate {
+  id: ID!
+  name: String! #text
+}
+
+type Query {
+  pirates: [Pirate!]! #todos
+}
+
+input NewPirate {
+  name: String! #text
+  pirateId: String! #userid
+}
+
+type Mutation {
+  createPirate(input: NewPirate!): Pirate!
+}
