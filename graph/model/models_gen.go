@@ -5,9 +5,13 @@ package model
 type NewPirate struct {
 	Name     string `json:"name"`
 	PirateID string `json:"pirateId"`
+	Bounty   string `json:"bounty"`
+	Crew     string `json:"crew"`
 }
 
 type Pirate struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
+	ID     string `json:"id"`
+	Name   string `json:"name"`
+	Bounty string `json:"bounty"`
+	Crew   string `json:"crew"`
 }

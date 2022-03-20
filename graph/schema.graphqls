@@ -4,7 +4,9 @@
 
 type Pirate {
   id: ID!
-  name: String! #text
+  name: String! 
+  bounty: String! 
+  crew: String!
 }
 
 type Query {
@@ -12,8 +14,10 @@ type Query {
 }
 
 input NewPirate {
-  name: String! #text
-  pirateId: String! #userid
+  name: String! 
+  pirateId: String! 
+  bounty: String!
+  crew: String! 
 }
 
 type Mutation {

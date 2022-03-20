@@ -15,6 +15,8 @@ func (r *mutationResolver) CreatePirate(ctx context.Context, input model.NewPira
 	pirate := &model.Pirate{
 		Name:   input.Name,
 		ID:     fmt.Sprintf("T%d", rand.Int()),
+		Bounty: input.Bounty,
+		Crew:   input.Crew,
 		//User: &model.User{ID: input.UserID, Name: "user " + input.UserID},
 	}
 	r.pirates = append(r.pirates, pirate)
