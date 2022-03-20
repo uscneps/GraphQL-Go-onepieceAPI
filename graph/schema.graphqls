@@ -8,7 +8,7 @@ type Pirate {
 }
 
 type Query {
-  pirates: [Pirate!]! #todos
+  pirates: [Pirate!]! 
 }
 
 input NewPirate {
