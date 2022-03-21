@@ -17,7 +17,6 @@ func (r *mutationResolver) CreatePirate(ctx context.Context, input model.NewPira
 		ID:     fmt.Sprintf("T%d", rand.Int()),
 		Bounty: input.Bounty,
 		Crew:   input.Crew,
-		//User: &model.User{ID: input.UserID, Name: "user " + input.UserID},
 	}
 	r.pirates = append(r.pirates, pirate)
 	return pirate, nil
@@ -25,6 +24,26 @@ func (r *mutationResolver) CreatePirate(ctx context.Context, input model.NewPira
 
 func (r *queryResolver) Pirates(ctx context.Context) ([]*model.Pirate, error) {
 	return r.pirates, nil
+}
+
+var strawhatsCrew = []*model.Strawhats{
+  {Name: "Monkey D. Luffy", ID: "01", Bounty: "1,500,000,000",Crew: "Strawhats",},
+  {Name: "Roronoa Zoro", ID: "02",Bounty: "320,000,000",Crew: "Strawhats",},
+  {Name: "Nami", ID: "03",Bounty: "66,000,000",Crew: "Strawhats",},
+  {Name: "God Usop", ID: "04",Bounty: "200,000,000",Crew: "Strawhats",},
+  {Name: "Vinsmoke Sanji ", ID: "05",Bounty: "330,000,000",Crew: "Strawhats",},
+  {Name: "Tony Tony Chopper", ID: "06",Bounty: "100",Crew: "Strawhats",},
+  {Name: "Nico Robin", ID: "07",Bounty: "130,000,000",Crew: "Strawhats",},
+  {Name: "Brook", ID: "08",Bounty: "83,000,000",Crew: "Strawhats",},
+  {Name: "Jimbei", ID: "09",Bounty: "83,000,000",Crew: "Strawhats",},
+  {Name: "Brook", ID: "10",Bounty: "438,000,000",Crew: "Strawhats",},
+  {Name: "Neferutari Bibi", ID: "11",Bounty: "0",Crew: "Strawhats",},
+}
+
+func (r *queryResolver) Strawhats(ctx context.Context) ([]*model.Strawhats, error) {
+	 
+
+	return strawhatsCrew, nil
 }
 
 // Mutation returns generated.MutationResolver implementation.

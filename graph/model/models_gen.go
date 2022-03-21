@@ -15,3 +15,10 @@ type Pirate struct {
 	Bounty string `json:"bounty"`
 	Crew   string `json:"crew"`
 }
+
+type Strawhats struct {
+	ID     string `json:"id"`
+	Name   string `json:"name"`
+	Bounty string `json:"bounty"`
+	Crew   string `json:"crew"`
+}

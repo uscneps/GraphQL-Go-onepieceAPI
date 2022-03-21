@@ -2,15 +2,24 @@
 #
 # https://gqlgen.com/getting-started/
 
+
 type Pirate {
-  id: ID!
+  id: ID! 
   name: String! 
+  bounty: String! 
+  crew: String!
+}
+
+type Strawhats {
+  id: String!
+  name: String!,
   bounty: String! 
   crew: String!
 }
 
 type Query {
   pirates: [Pirate!]! 
+  strawhats: [Strawhats!] #get api 
 }
 
 input NewPirate {
@@ -23,3 +32,5 @@ input NewPirate {
 type Mutation {
   createPirate(input: NewPirate!): Pirate!
 }
+
+
