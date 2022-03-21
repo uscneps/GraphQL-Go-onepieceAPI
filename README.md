@@ -162,7 +162,7 @@ Using GraphQL playground in http://localhost:8080/ (in my case) you can try this
   pirates{
     name
     id
-    bouty
+    bounty
     crew
     image //optional
   }
