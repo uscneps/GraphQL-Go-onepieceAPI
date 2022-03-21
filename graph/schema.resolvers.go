@@ -17,6 +17,7 @@ func (r *mutationResolver) CreatePirate(ctx context.Context, input model.NewPira
 		ID:     fmt.Sprintf("T%d", rand.Int()),
 		Bounty: input.Bounty,
 		Crew:   input.Crew,
+		Image:  input.Image,
 	}
 	r.pirates = append(r.pirates, pirate)
 	return pirate, nil
@@ -26,23 +27,19 @@ func (r *queryResolver) Pirates(ctx context.Context) ([]*model.Pirate, error) {
 	return r.pirates, nil
 }
 
-var strawhatsCrew = []*model.Strawhats{
-  {Name: "Monkey D. Luffy", ID: "01", Bounty: "1,500,000,000",Crew: "Strawhats",},
-  {Name: "Roronoa Zoro", ID: "02",Bounty: "320,000,000",Crew: "Strawhats",},
-  {Name: "Nami", ID: "03",Bounty: "66,000,000",Crew: "Strawhats",},
-  {Name: "God Usop", ID: "04",Bounty: "200,000,000",Crew: "Strawhats",},
-  {Name: "Vinsmoke Sanji ", ID: "05",Bounty: "330,000,000",Crew: "Strawhats",},
-  {Name: "Tony Tony Chopper", ID: "06",Bounty: "100",Crew: "Strawhats",},
-  {Name: "Nico Robin", ID: "07",Bounty: "130,000,000",Crew: "Strawhats",},
-  {Name: "Brook", ID: "08",Bounty: "83,000,000",Crew: "Strawhats",},
-  {Name: "Jimbei", ID: "09",Bounty: "83,000,000",Crew: "Strawhats",},
-  {Name: "Brook", ID: "10",Bounty: "438,000,000",Crew: "Strawhats",},
-  {Name: "Neferutari Bibi", ID: "11",Bounty: "0",Crew: "Strawhats",},
-}
-
 func (r *queryResolver) Strawhats(ctx context.Context) ([]*model.Strawhats, error) {
-	 
-
+	var strawhatsCrew = []*model.Strawhats{
+		{Name: "Monkey D. Luffy", ID: "01", Bounty: "1,500,000,000", Crew: "Strawhats", Image: "https://rb.gy/xz0x9h"},
+		{Name: "Roronoa Zoro", ID: "02", Bounty: "320,000,000", Crew: "Strawhats", Image: "https://rb.gy/imkdhx"},
+		{Name: "Nami", ID: "03", Bounty: "66,000,000", Crew: "Strawhats", Image: "https://rb.gy/dncyia"},
+		{Name: "God Usop", ID: "04", Bounty: "200,000,000", Crew: "Strawhats", Image: "https://rb.gy/xa68o1"},
+		{Name: "Vinsmoke Sanji ", ID: "05", Bounty: "330,000,000", Crew: "Strawhats", Image: "https://rb.gy/sofr7o"},
+		{Name: "Tony Tony Chopper", ID: "06", Bounty: "100", Crew: "Strawhats", Image: "https://rb.gy/oh2nmv"},
+		{Name: "Nico Robin", ID: "07", Bounty: "130,000,000", Crew: "Strawhats", Image: "https://rb.gy/5puvys"},
+		{Name: "Brook", ID: "08", Bounty: "83,000,000", Crew: "Strawhats", Image: "https://rb.gy/5kelik"},
+		{Name: "Jimbei", ID: "09", Bounty: "83,000,000", Crew: "Strawhats", Image: "https://rb.gy/mafbmm"},
+		{Name: "Neferutari Bibi", ID: "11", Bounty: "0", Crew: "Strawhats", Image: "https://rb.gy/zddixu"},
+	}
 	return strawhatsCrew, nil
 }
 

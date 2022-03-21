@@ -8,6 +8,7 @@ type Pirate {
   name: String! 
   bounty: String! 
   crew: String!
+  image: String
 }
 
 type Strawhats {
@@ -15,6 +16,7 @@ type Strawhats {
   name: String!,
   bounty: String! 
   crew: String!
+  image: String!
 }
 
 type Query {
@@ -27,6 +29,7 @@ input NewPirate {
   pirateId: String! 
   bounty: String!
   crew: String! 
+  image: String
 }
 
 type Mutation {

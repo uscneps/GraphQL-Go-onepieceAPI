@@ -3,17 +3,19 @@
 package model
 
 type NewPirate struct {
-	Name     string `json:"name"`
-	PirateID string `json:"pirateId"`
-	Bounty   string `json:"bounty"`
-	Crew     string `json:"crew"`
+	Name     string  `json:"name"`
+	PirateID string  `json:"pirateId"`
+	Bounty   string  `json:"bounty"`
+	Crew     string  `json:"crew"`
+	Image    *string `json:"image"`
 }
 
 type Pirate struct {
-	ID     string `json:"id"`
-	Name   string `json:"name"`
-	Bounty string `json:"bounty"`
-	Crew   string `json:"crew"`
+	ID     string  `json:"id"`
+	Name   string  `json:"name"`
+	Bounty string  `json:"bounty"`
+	Crew   string  `json:"crew"`
+	Image  *string `json:"image"`
 }
 
 type Strawhats struct {
@@ -21,4 +23,5 @@ type Strawhats struct {
 	Name   string `json:"name"`
 	Bounty string `json:"bounty"`
 	Crew   string `json:"crew"`
+	Image  string `json:"image"`
 }

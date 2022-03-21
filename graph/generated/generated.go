@@ -51,6 +51,7 @@ type ComplexityRoot struct {
 		Bounty func(childComplexity int) int
 		Crew   func(childComplexity int) int
 		ID     func(childComplexity int) int
+		Image  func(childComplexity int) int
 		Name   func(childComplexity int) int
 	}
 
@@ -63,6 +64,7 @@ type ComplexityRoot struct {
 		Bounty func(childComplexity int) int
 		Crew   func(childComplexity int) int
 		ID     func(childComplexity int) int
+		Image  func(childComplexity int) int
 		Name   func(childComplexity int) int
 	}
 }
@@ -123,6 +125,13 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 
 		return e.complexity.Pirate.ID(childComplexity), true
 
+	case "Pirate.image":
+		if e.complexity.Pirate.Image == nil {
+			break
+		}
+
+		return e.complexity.Pirate.Image(childComplexity), true
+
 	case "Pirate.name":
 		if e.complexity.Pirate.Name == nil {
 			break
@@ -164,6 +173,13 @@ func (e *executableSchema) Complexity(typeName, field string, childComplexity in
 		}
 
 		return e.complexity.Strawhats.ID(childComplexity), true
+
+	case "Strawhats.image":
+		if e.complexity.Strawhats.Image == nil {
+			break
+		}
+
+		return e.complexity.Strawhats.Image(childComplexity), true
 
 	case "Strawhats.name":
 		if e.complexity.Strawhats.Name == nil {
@@ -246,6 +262,7 @@ type Pirate {
   name: String! 
   bounty: String! 
   crew: String!
+  image: String
 }
 
 type Strawhats {
@@ -253,11 +270,12 @@ type Strawhats {
   name: String!,
   bounty: String! 
   crew: String!
+  image: String!
 }
 
 type Query {
   pirates: [Pirate!]! 
-  strawhats: [Strawhats!] 
+  strawhats: [Strawhats!] #get api 
 }
 
 input NewPirate {
@@ -265,6 +283,7 @@ input NewPirate {
   pirateId: String! 
   bounty: String!
   crew: String! 
+  image: String
 }
 
 type Mutation {
@@ -530,6 +549,38 @@ func (ec *executionContext) _Pirate_crew(ctx context.Context, field graphql.Coll
 	return ec.marshalNString2string(ctx, field.Selections, res)
 }
 
+func (ec *executionContext) _Pirate_image(ctx context.Context, field graphql.CollectedField, obj *model.Pirate) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "Pirate",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Image, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		return graphql.Null
+	}
+	res := resTmp.(*string)
+	fc.Result = res
+	return ec.marshalOString2ᚖstring(ctx, field.Selections, res)
+}
+
 func (ec *executionContext) _Query_pirates(ctx context.Context, field graphql.CollectedField) (ret graphql.Marshaler) {
 	defer func() {
 		if r := recover(); r != nil {
@@ -792,6 +843,41 @@ func (ec *executionContext) _Strawhats_crew(ctx context.Context, field graphql.C
 	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
 		ctx = rctx // use context from middleware stack in children
 		return obj.Crew, nil
+	})
+	if err != nil {
+		ec.Error(ctx, err)
+		return graphql.Null
+	}
+	if resTmp == nil {
+		if !graphql.HasFieldError(ctx, fc) {
+			ec.Errorf(ctx, "must not be null")
+		}
+		return graphql.Null
+	}
+	res := resTmp.(string)
+	fc.Result = res
+	return ec.marshalNString2string(ctx, field.Selections, res)
+}
+
+func (ec *executionContext) _Strawhats_image(ctx context.Context, field graphql.CollectedField, obj *model.Strawhats) (ret graphql.Marshaler) {
+	defer func() {
+		if r := recover(); r != nil {
+			ec.Error(ctx, ec.Recover(ctx, r))
+			ret = graphql.Null
+		}
+	}()
+	fc := &graphql.FieldContext{
+		Object:     "Strawhats",
+		Field:      field,
+		Args:       nil,
+		IsMethod:   false,
+		IsResolver: false,
+	}
+
+	ctx = graphql.WithFieldContext(ctx, fc)
+	resTmp, err := ec.ResolverMiddleware(ctx, func(rctx context.Context) (interface{}, error) {
+		ctx = rctx // use context from middleware stack in children
+		return obj.Image, nil
 	})
 	if err != nil {
 		ec.Error(ctx, err)
@@ -2035,6 +2121,14 @@ func (ec *executionContext) unmarshalInputNewPirate(ctx context.Context, obj int
 			if err != nil {
 				return it, err
 			}
+		case "image":
+			var err error
+
+			ctx := graphql.WithPathContext(ctx, graphql.NewPathWithField("image"))
+			it.Image, err = ec.unmarshalOString2ᚖstring(ctx, v)
+			if err != nil {
+				return it, err
+			}
 		}
 	}
 
@@ -2139,6 +2233,13 @@ func (ec *executionContext) _Pirate(ctx context.Context, sel ast.SelectionSet, o
 			if out.Values[i] == graphql.Null {
 				invalids++
 			}
+		case "image":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._Pirate_image(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
 		default:
 			panic("unknown field " + strconv.Quote(field.Name))
 		}
@@ -2280,6 +2381,16 @@ func (ec *executionContext) _Strawhats(ctx context.Context, sel ast.SelectionSet
 		case "crew":
 			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
 				return ec._Strawhats_crew(ctx, field, obj)
+			}
+
+			out.Values[i] = innerFunc(ctx)
+
+			if out.Values[i] == graphql.Null {
+				invalids++
+			}
+		case "image":
+			innerFunc := func(ctx context.Context) (res graphql.Marshaler) {
+				return ec._Strawhats_image(ctx, field, obj)
 			}
 
 			out.Values[i] = innerFunc(ctx)
