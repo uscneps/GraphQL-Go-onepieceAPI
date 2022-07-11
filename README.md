@@ -5,7 +5,9 @@
 <br />
 <div align="center">
   <a>
-    <img src="https://i.redd.it/ygl8uumwnpt51.png" width="680" height="500">
+  
+  ![One_Piece_Anime_Logo](https://user-images.githubusercontent.com/38867931/178217876-43b54feb-15f1-4709-9f81-15d836e62f18.png)
+
   </a>
 </div>
 
