@@ -14,7 +14,7 @@
 
 
 ## About The Project
-In my opinion the best way to study new techologies is to make projects, so while studying Go and GraphQL i decided to create a basic One Piece (famous manga) API that returns the Strawhats crew information, and give you the possibility to create new crews. 
+basic One Piece (famous manga) API that returns the Strawhats crew information, and give you the possibility to create new crews. 
 
 
 ### Built With
