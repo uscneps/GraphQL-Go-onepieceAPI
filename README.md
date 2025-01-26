@@ -215,12 +215,3 @@ Don't forget to give the project a star! Thanks again! ❤️
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-## Contact
-
-Matteo Leonesi - [Linkedin](https://www.linkedin.com/in/matteo-leonesi-228867138/) - matteo.leonesi@gmail.com
-
-Project Link: [GraphQL-Go-onepieceAPI](https://github.com/MatteoLeonesi/GraphQL-Go-onepieceAPI)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
